@@ -12,14 +12,15 @@ jobs:
       - name: "Print Hello World"
         run: echo "Hello World!"
 
-      - name: "Print Current Date"
-        run: date
-
-      - name: "Print Current Directory"
-        run: pwd
-
-      - name: "List Files in Current Directory"
-        run: ls -la
+      - name: "Print some linux commands"
+        run: |
+          echo "Current Directory:"
+          pwd
+          echo "List of Files:"
+          ls -la
         
       - name: "Print Readme File"
         run: cat README.md
+
+      - name: "Generate ASCII Artwork"
+        run: cowsay "GitHub Actions are awesome!" >> ascii_art.txt
