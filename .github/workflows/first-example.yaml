@@ -6,11 +6,20 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
     steps:
+      - name: "Checkout Repository"
+        uses: actions/checkout@v4
+
       - name: "Print Hello World"
         run: echo "Hello World!"
+
       - name: "Print Current Date"
         run: date
+
       - name: "Print Current Directory"
         run: pwd
+
       - name: "List Files in Current Directory"
         run: ls -la
+        
+      - name: "Print Readme File"
+        run: cat README.md
