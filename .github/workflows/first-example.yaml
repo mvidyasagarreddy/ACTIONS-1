@@ -1,23 +1,11 @@
-name: "My First GitHub Action"
-
+name: "My first GitHub Actions workflow"
 on: [push]
-
 jobs:
-  sample_job:
+  build_job:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
 
-      - name: "Print Hello World"
-        run: echo "Hello World!"
-
-      - name: "Print some linux commands"
-        run: |
-          echo "Current Directory:"
-          pwd
-          echo "List of Files:"
-          ls -la
-        
-      - name: "Print Readme File"
-        run: cat README.md
+      - name: "List Repository Files"
+        run: ls -latr
