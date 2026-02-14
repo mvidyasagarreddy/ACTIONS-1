@@ -3,7 +3,7 @@ name: "My First GitHub Action"
 on: [push]
 
 jobs:
-  first_job:
+  sample_job:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout Repository"
@@ -21,6 +21,3 @@ jobs:
         
       - name: "Print Readme File"
         run: cat README.md
-
-      - name: "Generate ASCII Artwork"
-        run: cowsay "GitHub Actions are awesome!" >> ascii_art.txt
