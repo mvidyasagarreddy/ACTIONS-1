@@ -4,9 +4,17 @@ name: "Matrix Configuration Example"
 jobs:
   matrix-deploy:
     strategy:
+      fail-fast: false
+      max-parallel: 2
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, ubuntu-20.04]
         image: [hello-world, alpine:latest]
+        exclude:
+          - os: windows-latest
+            image: alpine:latest
+        include:
+          - os: ubuntu-latest
+            image: amd64/ubuntu:20.04
     runs-on: ${{ matrix.os }}
     steps:
       - name: Deploy on ${{ matrix.os }}
