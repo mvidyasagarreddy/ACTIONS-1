@@ -9,8 +9,9 @@ jobs:
       - name: "Checkout Repository"
         uses: actions/checkout@v4
 
+      - name: "List Repository Files"
+        run: ls -latr
+      
       - name: "Running ASCII Art Generator... script"
         run: sh ascii-script.sh
 
-      - name: "List Repository Files"
-        run: ls -latr
