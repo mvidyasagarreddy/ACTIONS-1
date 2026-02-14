@@ -15,17 +15,22 @@ jobs:
       - name: "Running ASCII Art Generator... script"
         run: sh ascii-script.sh
 
-      - name: "Sleep for 10 seconds"
-        run: sleep 10
+      - name: "Upload ASCII Art as artifact as a text file"
+        uses: actions/upload-artifact@v3
+        with:
+          name: dragon-artifact
+          path: dragon.txt
 
   test_job:
     runs-on: ubuntu-latest
     needs: build_job
     steps:
-      - name: "sleep for 10 seconds"
-        run: sleep 10
+      - name: "Download ASCII Art artifact"
+        uses: actions/download-artifact@v3
+        with:
+          name: dragon-artifact
       
-      - name: "Test file existence"
+      - name: "Artifact existence"
         run: |
           if [ -f "dragon.txt" ]; then
             echo "File exists."
@@ -37,6 +42,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test_job]
     steps:
+      - name: "Download ASCII Art artifact for deployment"
+        uses: actions/download-artifact@v3
+        with:
+          name: dragon-artifact
+
       - name: "Reading ASCII Art from dragon.txt"
         run: cat dragon.txt
 
