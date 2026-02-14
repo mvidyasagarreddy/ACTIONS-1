@@ -3,7 +3,7 @@ name: "Generate ASCII Artwork"
 on: [push]
 
 jobs:
-  ascii_art_job:
+  build_job:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout Repository"
@@ -15,3 +15,28 @@ jobs:
       - name: "Running ASCII Art Generator... script"
         run: sh ascii-script.sh
 
+      - name: "Sleep for 10 seconds"
+        run: sleep 10
+
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "sleep for 10 seconds"
+        run: sleep 10
+      
+      - name: "Test file existence"
+        run: |
+          if [ -f "dragon.txt" ]; then
+            echo "File exists."
+          else
+            echo "File does not exist."
+            exit 1
+          fi
+  deploy_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Reading ASCII Art from dragon.txt"
+        run: cat dragon.txt
+
+      - name: "Deploying ASCII Art"
+        run: echo "Deploying ASCII Art to production..."
