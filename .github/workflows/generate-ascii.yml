@@ -16,7 +16,7 @@ jobs:
         run: sh ascii-script.sh
 
       - name: "Upload ASCII Art as artifact as a text file"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: dragon-artifact
           path: dragon.txt
@@ -26,7 +26,7 @@ jobs:
     needs: build_job
     steps:
       - name: "Download ASCII Art artifact"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v7
         with:
           name: dragon-artifact
       
@@ -43,7 +43,7 @@ jobs:
     needs: [test_job]
     steps:
       - name: "Download ASCII Art artifact for deployment"
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v7
         with:
           name: dragon-artifact
 
