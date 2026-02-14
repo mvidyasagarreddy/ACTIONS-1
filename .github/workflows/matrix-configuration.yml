@@ -13,8 +13,8 @@ jobs:
           - os: windows-latest
             image: alpine:latest
         include:
-          - os: ubuntu-latest
-            image: amd64/ubuntu:20.04
+          - os: ubuntu-20.04
+            image: amd64/alpine
     runs-on: ${{ matrix.os }}
     steps:
       - name: Deploy on ${{ matrix.os }}
