@@ -1,0 +1,27 @@
+name: Exploring worklow filters and activities in GitHub Actions
+on:
+  workflow_dispatch:
+  # #run cron job every five minutes
+  # schedule:
+  #   - cron: "*/5 * * * *" 
+  push:
+    branches:
+        - main #Run workflow for push events on main branch
+        - '!feature/*' #Ignore all branches starting with feature/
+    # branches-ignore:
+    #     - feature/* #Ignore all branches starting with feature/
+    #     - test/* #Ignore all branches starting with test/
+  pull_request:
+    types: [opened, synchronize, reopened] #Run workflow for pull request events when PR is opened, synchronized or reopened
+    paths-ignore:
+      - 'docs/**' #Ignore changes in docs directory
+      - '**/*.md' #Ignore changes in markdown files
+      - README.md #Ignore changes in README.md file
+    branches:
+      - main #Run workflow for pull request events targeting main branch
+jobs:
+    example_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Example step
+          run: echo "This is an example step that runs based on workflow filters."
