@@ -1,0 +1,47 @@
+name: Usage of environment variables and secrets
+on: [push]
+env:
+    GREETING: "Hello, World!"
+    FAREWELL: "Goodbye, World!"
+jobs:
+    ## This job demonstrates the usage of environment variables in GitHub Actions at the step level.
+    # env_variables_step_level:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - name: "Checkout Repository"
+    #           uses: actions/checkout@v4
+
+    #         - name: "Set and Use Environment Variables"
+    #           run: |
+    #             # Setting environment variables
+    #             export GREETING="Hello, World!"
+    #             export FAREWELL="Goodbye, World!"
+                
+    #             # Using environment variables
+    #             echo $GREETING
+    #             echo $FAREWELL
+    ## This job demonstrates the usage of secrets in GitHub Actions at the job level.
+    # env_variables_job_level:
+    #     runs-on: ubuntu-latest
+    #     env:
+    #         GREETING: "Hello, World!"
+    #         FAREWELL: "Goodbye, World!"
+    #     steps:
+    #         - name: "Checkout Repository"
+    #           uses: actions/checkout@v4
+    #         - name: "Use Environment Variables at Job Level"
+    #           run: |
+    #             echo $GREETING
+    #             echo $FAREWELL
+    # This job demonstrates the usage of secrets in GitHub Actions at the workflow level.
+    env_variables_workflow_level:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Checkout Repository"
+              uses: actions/checkout@v4
+
+            - name: "Use Environment Variables at Workflow Level"
+              run: |
+                echo $GREETING
+                echo $FAREWELL
+    
