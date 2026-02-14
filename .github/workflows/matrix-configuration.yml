@@ -1,0 +1,33 @@
+name: "Matrix Configuration Example"
+"on":
+  workflow_dispatch:
+jobs:
+  ubuntu-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy on Ubuntu
+        run: echo "Deploying on Ubuntu"
+
+      - name: Check runner OS, architecture, and name
+        run: echo "Running on ${{ runner.os }} with architecture ${{ runner.arch }} on runner ${{ runner.name }}"
+
+      - name: echo docker details
+        run: docker info
+
+      - name: run image
+        run: docker run hello-world
+  windows-deploy:
+    runs-on: windows-latest 
+    steps:
+      - name: Deploy on Windows
+        run: echo "Deploying on Windows"
+
+      - name: Check runner OS, architecture, and name
+        run: echo "Running on ${{ runner.os }} with architecture ${{ runner.arch }} on runner ${{ runner.name }}"
+
+      - name: echo docker details
+        run: docker info
+
+      - name: run image
+        run: docker run hello-world
+
